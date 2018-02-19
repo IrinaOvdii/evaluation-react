@@ -7,7 +7,7 @@ import JoinGameDialog from '../components/games/JoinGameDialog'
 
 const playerShape = PropTypes.shape({
   userId: PropTypes.string.isRequired,
-  pairs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  symbol: PropTypes.string,
   name: PropTypes.string
 })
 
@@ -19,23 +19,15 @@ class Game extends PureComponent {
     game: PropTypes.shape({
       _id: PropTypes.string.isRequired,
       userId: PropTypes.string.isRequired,
-      players: PropTypes.arrayOf(playerShape),
+      winnerId: PropTypes.string,
+      players: PropTypes.arrayOf(playerShape).isRequired,
       draw: PropTypes.bool,
       updatedAt: PropTypes.string.isRequired,
       createdAt: PropTypes.string.isRequired,
-      started: PropTypes.bool,
-      turn: PropTypes.number.isRequired,
-      cards: PropTypes.arrayOf(PropTypes.shape({
-        symbol: PropTypes.string,
-        _id: PropTypes.string,
-        won: PropTypes.bool,
-        visible: PropTypes.bool
-      }))
     }),
     currentPlayer: playerShape,
     isPlayer: PropTypes.bool,
     isJoinable: PropTypes.bool,
-    hasTurn: PropTypes.bool
   }
 
   componentWillMount() {
@@ -82,12 +74,10 @@ class Game extends PureComponent {
 const mapStateToProps = ({ currentUser, games }, { match }) => {
   const game = games.filter((g) => (g._id === match.params.gameId))[0]
   const currentPlayer = game && game.players.filter((p) => (p.userId === currentUser._id))[0]
-  const hasTurn = !!currentPlayer && game.players[game.turn].userId === currentUser._id
   return {
     currentPlayer,
     game,
     isPlayer: !!currentPlayer,
-    hasTurn,
     isJoinable: game && !currentPlayer && game.players.length < 2
   }
 }
