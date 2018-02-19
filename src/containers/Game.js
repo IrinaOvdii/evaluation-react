@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchOneGame, fetchPlayers } from '../actions/games/fetch'
+import doTurn from '../actions/games/doTurn'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import JoinGameDialog from '../components/games/JoinGameDialog'
+import TurnButton from '../components/games/TurnButton'
 
 const playerShape = PropTypes.shape({
   userId: PropTypes.string.isRequired,
@@ -46,6 +48,10 @@ class Game extends PureComponent {
     }
   }
 
+  doTurnWithGameId = (weapon) => () => {
+    return this.props.doTurn(weapon, this.props.game._id)
+  }
+
   render() {
     const { game } = this.props
 
@@ -56,14 +62,24 @@ class Game extends PureComponent {
       .join(' vs ')
 
     return (
-      <div className="Game">
-        <h1>Game!</h1>
+      <div style={{ display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }} className="Game">
+        <h1>Pick Your Weapon</h1>
         <p>{title}</p>
 
-        <h1>YOUR GAME HERE! :)</h1>
-
-        <h2>Debug Props</h2>
-        <pre>{JSON.stringify(this.props, true, 2)}</pre>
+        <div style={{ display: 'flex', alignItems: 'center', flexFlow: 'row wrap' }}>
+          <TurnButton
+            onClick={this.doTurnWithGameId('rock')}
+            weapon="rock"
+          />
+          <TurnButton
+            onClick={this.doTurnWithGameId('paper')}
+            weapon="paper"
+          />
+          <TurnButton
+            onClick={this.doTurnWithGameId('scissors')}
+            weapon="scissors"
+          />
+        </div>
 
         <JoinGameDialog gameId={game._id} />
       </div>
@@ -85,5 +101,6 @@ const mapStateToProps = ({ currentUser, games }, { match }) => {
 export default connect(mapStateToProps, {
   subscribeToWebsocket,
   fetchOneGame,
-  fetchPlayers
+  fetchPlayers,
+  doTurn
 })(Game)
