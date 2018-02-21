@@ -12,6 +12,7 @@ import BatchItem from '../components/batches/BatchItem'
 // import MenuItem from 'material-ui/MenuItem'
 import './BatchContainer.css'
 
+
 class BatchContainer extends PureComponent {
   static propTypes = {
     batches: PropTypes.array.isRequired,

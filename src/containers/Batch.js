@@ -1,9 +1,8 @@
-import React, { PureComponent } from 'react';
-// import { string, date, func, shape, arrayOf } from 'prop-types';
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux';
-import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch';
-import { connect as subscribeToWebsocket } from '../actions/websocket';
+import { connect } from 'react-redux'
+import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
+import { connect as subscribeToWebsocket } from '../actions/websocket'
 
 const styles = {
     batchContainer: {
