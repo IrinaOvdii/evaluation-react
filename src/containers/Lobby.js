@@ -25,11 +25,12 @@ class Lobby extends PureComponent {
 
   goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
 
+
   renderBatch = (batch, index) => {
     return (
       <BatchItem
         key={index}
-        onClick={this.goToBatch(batch._id)}
+        goToBatch={this.goToBatch(batch._id)}
          { ...batch}
       />
     )
@@ -41,9 +42,9 @@ class Lobby extends PureComponent {
         <h1>All Batches</h1>
         <CreateBatchButton />
 
-        <main>
-          { this.props.batches.map(this.renderBatch)}
-        </main>
+          <main>
+            { this.props.batches.map(this.renderBatch)}
+          </main>
       </div>
     )
   }
