@@ -10,9 +10,9 @@ import BatchItem from '../components/batches/BatchItem'
 
 // import Menu from 'material-ui/Menu'
 // import MenuItem from 'material-ui/MenuItem'
-import './Lobby.css'
+import './BatchContainer.css'
 
-class Lobby extends PureComponent {
+class BatchContainer extends PureComponent {
   static propTypes = {
     batches: PropTypes.array.isRequired,
     fetchBatches: PropTypes.func.isRequired,
@@ -53,4 +53,4 @@ class Lobby extends PureComponent {
 
 const mapStateToProps = ({ batches }) => ({ batches })
 
-export default connect(mapStateToProps, { fetchBatches, subscribeToWebsocket, fetchStudents, push })(Lobby)
+export default connect(mapStateToProps, { fetchBatches, subscribeToWebsocket, fetchStudents, push })(BatchContainer)

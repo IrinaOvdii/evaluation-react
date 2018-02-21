@@ -26,7 +26,7 @@ class Batch extends PureComponent {
     subscribeToWebsocket: PropTypes.func.isRequired,
     batch: PropTypes.shape({
       _id: PropTypes.string.isRequired,
-      userId: PropTypes.string.isRequired,
+      // userId: PropTypes.string.isRequired,
       students: PropTypes.arrayOf(studentShape).isRequired,
       // updatedAt: PropTypes.string.isRequired,
       // createdAt: PropTypes.string.isRequired,
@@ -56,7 +56,7 @@ class Batch extends PureComponent {
 
     const title = batch.students.map(p => (p.name || null))
 
-    return 
+    return
       // <div style={{ display: 'flex', flexFlow: 'column wrap', alignItems: 'center' }} className="Game">
       //   <h1>Pick Your Weapon</h1>
       //   <p>{title}</p>
