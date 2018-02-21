@@ -1,4 +1,4 @@
-// src/actions/games/create.js
+// src/actions/batches/create.js
 import API from '../../api/client'
 import {
   APP_LOADING,
@@ -13,7 +13,7 @@ export default () => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.post('/games', {})
+    api.post('/batches', {})
       .then(() => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
