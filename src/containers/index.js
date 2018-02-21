@@ -2,11 +2,11 @@ import BatchContainer from './BatchContainer'
 import Batch from './Batch'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import BatchItem from '../batches/BatchItem'
+// import BatchItem from '../batches/BatchItem'
 
 export {
   BatchContainer,
-  BatchItem,
+  // BatchItem,
   Batch,
   SignIn,
   SignUp,
