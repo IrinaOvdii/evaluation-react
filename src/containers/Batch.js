@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { push } from 'react-router-redux'
 import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import StudentInfo from '../components/batches/StudentInfo'
@@ -64,44 +65,39 @@ class Batch extends PureComponent {
         }
     }
 
-    selectStudent = student => () => {
-        console.error(student)
-    }
-    // renderStudent(batch, index) {
-    //   return (
-    //     <StudentInfo
-    //       key={index}
-    //       // updateRecipe={this.props.updateRecipe}
-    //       {...batch}
-    //     />
-    //   )
-    // }
+    selectStudent = (student, batchId) => () => {
+        this.props.push(`/batches/${batchId}/students/${student._id}`)
+    };
 
     render() {
       const { batch } = this.props;
+      if (!batch) return null;
+      const { _id } = batch;
+      const names = batch.students.map(item => item.name);
+      const randName = names[Math.floor(Math.random()*names.length)];
 
-        if (!batch) return null;
 
-        return (
-          <div style={styles.batchContainer} className="Batch">
-           {batch.students.map(student => (
-          <div
-            style={styles.studentContainer}
-            key={student._id}
-            onClick={this.selectStudent(student)} >
-              <h5>{student.name}</h5>
-              <img src={student.photo} alt={student.name} width='20%'/>
-              <h6>{student.lastColor}</h6>
-          </div>))}
+      return (
+        <div style={styles.batchContainer} className="Batch">
+            {batch.students.map(student => (
+                  <div
+                      style={styles.studentContainer}
+                      key={student._id}
+                      onClick={this.selectStudent(student, _id)}
+                  >
+                  <h5>{student.name}</h5>
+                      <img src={student.photo} alt={student.name} width='20%'/>
+                      <h6>{student.lastColor}</h6>
+                  </div>))}
 
-            <div>
-              <button onClick={this.props.onGetStudent}>ASK A QUESTION</button>
-            </div>
+                  <div>
+                    <button onClick={this.props.onGetStudent}>ASK A QUESTION</button>
+                  </div>
 
-          </div>)
+        </div>)
+        }
 
     }
-}
 
 const mapStateToProps = ({ batches }, { match }) => {
     const batch = batches.filter((g) => (g._id === match.params.batchId))[0];
@@ -114,4 +110,5 @@ export default connect(mapStateToProps, {
     subscribeToWebsocket,
     fetchOneBatch,
     fetchStudents,
+    push
 })(Batch)
