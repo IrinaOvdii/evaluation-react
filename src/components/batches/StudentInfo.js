@@ -22,8 +22,8 @@ class StudentInfo extends Component {
                         <img src={student.photo} alt={student.name} width='100%'/>
                     </div>
                     <div className="info" style={{display: 'flex', flexFlow: 'column'}}>
-                        <p>{student.name}</p>
-                        <p>{batch.batchNumber}</p>
+                        <p>Full name: {student.name}</p>
+                        <p>Batch Number: {batch.batchNumber}</p>
                         <p>Some color line</p>
                     </div>
                 </div>

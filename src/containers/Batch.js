@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
+import StudentInfo from '../components/batches/StudentInfo'
 
 const styles = {
     batchContainer: {
@@ -68,7 +69,16 @@ class Batch extends PureComponent {
 
     selectStudent = student => () => {
         console.error(student)
-    };
+    }
+    // renderStudent(batch, index) {
+    //   return (
+    //     <StudentInfo
+    //       key={index}
+    //       // updateRecipe={this.props.updateRecipe}
+    //       {...batch}
+    //     />
+    //   )
+    // }
 
     render() {
         const { batch } = this.props;
@@ -83,6 +93,7 @@ class Batch extends PureComponent {
                         style={styles.studentContainer}
                         key={student._id}
                         onClick={this.selectStudent(student)}
+                        // onClick={batch.students.map(this.renderStudent.bind(this))}
                     >
                     <h5>{student.name}</h5>
                     <img src={student.photo} alt={student.name} width='20%'/>
