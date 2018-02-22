@@ -24,7 +24,7 @@ class StudentInfo extends Component {
                     <div className="info" style={{display: 'flex', flexFlow: 'column'}}>
                         <p>Full name: {student.name}</p>
                         <p>Batch Number: {batch.batchNumber}</p>
-                        <p>Some color line</p>
+                        <p>Last evaluation color: {student.lastColor}</p>
                     </div>
                 </div>
                 <p>Daily evalueation</p>

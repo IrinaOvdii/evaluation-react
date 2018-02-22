@@ -43,9 +43,6 @@ class Batch extends PureComponent {
         batch: PropTypes.shape({
             _id: PropTypes.string.isRequired,
             students: PropTypes.arrayOf(studentShape).isRequired,
-            // userId: string.isRequired,
-            // updatedAt: PropTypes.string.isRequired,
-            // createdAt: PropTypes.string.isRequired,
         }),
     };
 
@@ -81,26 +78,27 @@ class Batch extends PureComponent {
     // }
 
     render() {
-        const { batch } = this.props;
+      const { batch } = this.props;
 
         if (!batch) return null;
 
         return (
-            <div style={styles.batchContainer}
-                 className="Batch">
-                {batch.students.map(student => (
-                    <div
-                        style={styles.studentContainer}
-                        key={student._id}
-                        onClick={this.selectStudent(student)}
-                        // onClick={batch.students.map(this.renderStudent.bind(this))}
-                    >
-                    <h5>{student.name}</h5>
-                    <img src={student.photo} alt={student.name} width='20%'/>
-                    <h6>{student.lastColor}</h6>
-                </div>))}
+          <div style={styles.batchContainer} className="Batch">
+           {batch.students.map(student => (
+          <div
+            style={styles.studentContainer}
+            key={student._id}
+            onClick={this.selectStudent(student)} >
+              <h5>{student.name}</h5>
+              <img src={student.photo} alt={student.name} width='20%'/>
+              <h6>{student.lastColor}</h6>
+          </div>))}
 
-            </div>)
+            <div>
+              <button onClick={this.props.onGetStudent}>ASK A QUESTION</button>
+            </div>
+
+          </div>)
 
     }
 }
