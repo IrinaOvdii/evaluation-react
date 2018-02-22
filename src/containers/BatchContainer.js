@@ -7,9 +7,7 @@ import fetchBatches, { fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import CreateBatchButton from '../components/batches/CreateBatchButton'
 import BatchItem from '../components/batches/BatchItem'
-
-// import Menu from 'material-ui/Menu'
-// import MenuItem from 'material-ui/MenuItem'
+import BatchEditor from '../components/batches/BatchEditor'
 import './BatchContainer.css'
 
 
@@ -41,6 +39,7 @@ class BatchContainer extends PureComponent {
     return(
       <div className="batches wrapper">
         <h1>All Batches</h1>
+        < BatchEditor />
         <CreateBatchButton />
 
           <main>

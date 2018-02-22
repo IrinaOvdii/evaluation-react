@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
+import { Link } from 'react-router-dom'
 import StudentInfo from '../components/batches/StudentInfo'
 
 const styles = {
