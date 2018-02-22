@@ -39,12 +39,10 @@ class BatchContainer extends PureComponent {
     return(
       <div className="batches wrapper">
         <h1>All Batches</h1>
-        < BatchEditor />
-        <CreateBatchButton />
-
           <main>
             { this.props.batches.map(this.renderBatch)}
           </main>
+        < BatchEditor />
       </div>
     )
   }

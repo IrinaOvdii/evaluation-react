@@ -6,6 +6,7 @@ import DatePicker from 'material-ui/DatePicker';
 // import 'react-datepicker/dist/react-datepicker.css';
 // import './RecipeEditor.css'
 // import BATCH_CREATED  from '../actions/batches/subscribe'
+import createBatch from '../../actions/batches/create'
 
 class BatchEditor extends PureComponent {
   constructor(props) {
@@ -23,7 +24,7 @@ class BatchEditor extends PureComponent {
 
   updateBatchNumber(event) {
     this.setState({
-      butchNumber: this.refs.butchNumber.input.value
+      butchNumber: this.refs.butchNumber.value
     })
   }
 
@@ -55,32 +56,39 @@ class BatchEditor extends PureComponent {
     }
 
     console.log(batch)
-    this.props.BATCH_CREATED(batch)
+    this.props.createBatch(batch)
 
   }
 
   render() {
     return (
       <div className="editor">
-        <input
-          type="text"
-          ref="butchNumber"
-          className="butchNumber"
-          placeholder="Number of new batch"
-          defaultValue={this.state.butchNumber}
-          onChange={this.updateBatchNumber.bind(this)}
-          onKeyDown={this.updateBatchNumber.bind(this)} />
+        <h5>Create new Batch:</h5>
+          <input
+            type="text"
+            ref="butchNumber"
+            className="butchNumber"
+            placeholder="Number of new batch"
+            defaultValue={this.state.butchNumber}
+            onChange={this.updateBatchNumber.bind(this)}
+            onKeyDown={this.updateBatchNumber.bind(this)}
+          />
 
           <input
             type="date"
             ref="startDate"
             className="startDate"
-            
-             />
+            datapicker
+            selected={this.state.startDate} onChange={this.setStartDate.bind(this)}
+          />
 
-
-          Start date: <DatePicker selected={this.state.startDate} onChange={this.setStartDate.bind(this)} />
-          End date: <DatePicker  selected={this.state.endDate} onChange={this.setEndDate.bind(this)}/>
+           <input
+             type="date"
+             ref="endDate"
+             className="endDate"
+             datapicker
+             selected={this.state.endDate} onChange={this.setEndDate.bind(this)}
+          />
 
         <div className="actions">
           <button className="primary" onClick={this.saveBatch.bind(this)}>Save</button>
@@ -90,4 +98,4 @@ class BatchEditor extends PureComponent {
   }
 }
 
-export default connect(null, { })(BatchEditor)
+export default connect(null, { createBatch })(BatchEditor)
