@@ -10,6 +10,7 @@ import {
 const api = new API()
 
 export default (batch) => {
+  console.log("in create.js : " , batch)
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 

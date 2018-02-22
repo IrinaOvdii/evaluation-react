@@ -1,22 +1,17 @@
 import React, { PureComponent } from 'react'
-// import Editor from 'react-medium-editor'
-// import toMarkdown from 'to-markdown'
 import { connect } from 'react-redux'
 import DatePicker from 'material-ui/DatePicker';
-// import 'react-datepicker/dist/react-datepicker.css';
-// import './RecipeEditor.css'
-// import BATCH_CREATED  from '../actions/batches/subscribe'
 import createBatch from '../../actions/batches/create'
 
 class BatchEditor extends PureComponent {
   constructor(props) {
     super()
 
-    const { butchNumber, startDate, endDate } = props
+    const { batchNumber, startDate, endDate } = props
 
 
     this.state = {
-      butchNumber,
+      batchNumber,
       startDate,
       endDate
     }
@@ -24,33 +19,32 @@ class BatchEditor extends PureComponent {
 
   updateBatchNumber(event) {
     this.setState({
-      butchNumber: this.refs.butchNumber.value
+      batchNumber: this.refs.batchNumber.value
     })
+    console.log(this.refs.batchNumber)
   }
 
-  setStartDate(date) {
-      this.setState({
-        ...this.state,
-        startDate: date
-      });
-  }
-
-  setEndDate(date) {
-      this.setState({
-        ...this.state,
-        endDate: date
-      });
-  }
+  // setStartDate() {
+  //   this.setState({
+  //     startDate: this.refs.startDate.state.date
+  //
+  //   })
+  //   console.log(this.refs.startDate.state.date)
+  // }
+  //
+  // setEndDate() {
+  //   this.setState({
+  //     endDate: this.refs.endDate.state.date
+  //   })
+  // }
 
   saveBatch() {
-    const {
-      butchNumber,
-      startDate,
-      endDate
-    } = this.state
+    const startDate = this.refs.startDate.state.date
+    const endDate = this.refs.endDate.state.date
+    const { batchNumber } = this.state
 
     const batch = {
-      butchNumber,
+      batchNumber,
       startDate,
       endDate
     }
@@ -63,32 +57,21 @@ class BatchEditor extends PureComponent {
   render() {
     return (
       <div className="editor">
-        <h5>Create new Batch:</h5>
+        <h5>Create New Batch:</h5>
           <input
             type="text"
-            ref="butchNumber"
-            className="butchNumber"
+            ref="batchNumber"
+            className="batchNumber"
             placeholder="Number of new batch"
-            defaultValue={this.state.butchNumber}
+            defaultValue={this.state.batchNumber}
             onChange={this.updateBatchNumber.bind(this)}
             onKeyDown={this.updateBatchNumber.bind(this)}
           />
 
-          <input
-            type="date"
-            ref="startDate"
-            className="startDate"
-            datapicker
-            selected={this.state.startDate} onChange={this.setStartDate.bind(this)}
-          />
-
-           <input
-             type="date"
-             ref="endDate"
-             className="endDate"
-             datapicker
-             selected={this.state.endDate} onChange={this.setEndDate.bind(this)}
-          />
+        <div>
+          <DatePicker ref="startDate" hintText="Start Date" container="inline" />
+          <DatePicker ref="endDate" hintText="End Date" container="inline" mode="landscape" />
+        </div>
 
         <div className="actions">
           <button className="primary" onClick={this.saveBatch.bind(this)}>Save</button>
