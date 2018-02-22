@@ -85,7 +85,7 @@ class Batch extends PureComponent {
                         onClick={this.selectStudent(student)}
                     >
                     <h5>{student.name}</h5>
-                    <img src={student.photo} alt={student.name} width='100%'/>
+                    <img src={student.photo} alt={student.name} width='20%'/>
                     <h6>{student.lastColor}</h6>
                 </div>))}
 
