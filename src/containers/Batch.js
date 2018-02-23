@@ -73,7 +73,25 @@ class Batch extends PureComponent {
       const names = this.props.batch ? this.props.batch.students.map(item => item.name) : []
       const randName = names[Math.floor(Math.random()*names.length)]
       alert(randName)
+
+      // var rndNumber = Math.floor(Math.random()*(100 - 1)) + 1
+      // console.log(rndNumber)
+      // if(rndNumber <= 49){
+      //   studentsColor = 'red'
+      // }else if(rndNumber <= 82){
+      //   studentsColor = 'yellow'
+      // }
+
+      //filter students by selected color
+      // var selectedStudents = []
+      // for(var i in students){
+      //   if(students[i].color == studentsColor){
+      //     selectedStudents.push(students[i])
+      //   }
+      // }
     }
+
+
 
     render() {
       const { batch } = this.props

@@ -1,18 +1,18 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import fetchBatches, { fetchOneBatch, fetchStudents } from '../../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../../actions/websocket'
 
-class StudentInfo extends Component {
-  //or componentDidMount ??
-    componentWillMount() {
-        !this.props.batch && this.props.fetchBatches()
+class StudentInfo extends PureComponent {
+    componentDidMount() {
+      !this.props.batch && this.props.fetchBatches()
     }
 
     render() {
       // console.error(this.props);
       const { student, batch } = this.props
       if (!student) return null
+
       return (
         <div>
           <div className="studentInfo" style={{ display: 'flex'}}>
@@ -24,6 +24,17 @@ class StudentInfo extends Component {
               <p>Batch Number: {batch.batchNumber}</p>
               <p>Last evaluation color: {student.lastColor}</p>
             </div>
+
+            <div>
+              <button onClick={this.onChangeColor}>GREEN</button>
+            </div>
+            <div>
+              <button onClick={this.onChangeColor}>YELLOW</button>
+            </div>
+            <div>
+              <button onClick={this.onChangeColor}>RED</button>
+            </div>
+
           </div>
           <p>Daily evaluation</p>
         </div>
