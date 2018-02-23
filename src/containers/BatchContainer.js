@@ -34,7 +34,7 @@ class BatchContainer extends PureComponent {
   render() {
     return(
       <div className="batches wrapper">
-        <h1>All Batches</h1>
+        <h1 style={{ 'text-align': 'center'}}>All Batches</h1>
           <main>
             { this.props.batches.map(this.renderBatch)}
           </main>

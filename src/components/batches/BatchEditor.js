@@ -40,8 +40,9 @@ class BatchEditor extends PureComponent {
   render() {
     return (
       <div className="editor">
-        <h5>Create New Batch:</h5>
+        <h4>Create New Batch:</h4>
           <input
+            style={{ margin: '4px' }}
             type="text"
             ref="batchNumber"
             className="batchNumber"
@@ -57,7 +58,7 @@ class BatchEditor extends PureComponent {
         </div>
 
         <div className="actions">
-          <button className="primary" onClick={this.saveBatch.bind(this)}>Save</button>
+          <button style={{ margin: '4px' }} className="primary" onClick={this.saveBatch.bind(this)}>Save</button>
         </div>
       </div>
     )
