@@ -69,26 +69,30 @@ class Batch extends PureComponent {
       this.props.push(`/batches/${batchId}/students/${student._id}`)
     }
 
+    // onGetStudent = () => {
+    //   const names = this.props.batch ? this.props.batch.students.map(item => item.name) : []
+    //   const randName = names[Math.floor(Math.random()*names.length)]
+    //   alert(randName)
+    // }
+
     onGetStudent = () => {
-      const names = this.props.batch ? this.props.batch.students.map(item => item.name) : []
-      const randName = names[Math.floor(Math.random()*names.length)]
-      alert(randName)
+      const studentsRed = batch.students.filter((student) => student.lastColor === 'red')
+      const studentsYellow = batch.students.filter((student) => student.lastColor === 'yellow')
+      const studentsGreen = batch.students.filter((student) => student.lastColor === 'green')
+      const risk = Math.floor(Math.random() * 100)
+      let name = null
 
-      // var rndNumber = Math.floor(Math.random()*(100 - 1)) + 1
-      // console.log(rndNumber)
-      // if(rndNumber <= 49){
-      //   studentsColor = 'red'
-      // }else if(rndNumber <= 82){
-      //   studentsColor = 'yellow'
-      // }
+      if(risk <= 48) {
+        name = studentsRed[Math.floor(Math.random()*studentsRed.length)]
+      }
+      else if ((risk <= 82) && (risk > 48)) {
+        name = studentsYellow[Math.floor(Math.random()*studentsYellow.length)]
+      }
+      else if (risk > 82) {
+        name = studentsGreen[Math.floor(Math.random()*studentsGreen.length)]
+      }
 
-      //filter students by selected color
-      // var selectedStudents = []
-      // for(var i in students){
-      //   if(students[i].color == studentsColor){
-      //     selectedStudents.push(students[i])
-      //   }
-      // }
+      alert(name)
     }
 
 
