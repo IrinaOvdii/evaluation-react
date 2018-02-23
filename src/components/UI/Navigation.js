@@ -23,8 +23,8 @@ class Navigation extends PureComponent {
     this.props.signOut()
   }
 
-  signUp = () => {
-    this.props.push('/sign-up')
+  signIn = () => {
+    this.props.push('/sign-in')
   }
 
   goHome = () => {
@@ -39,7 +39,7 @@ class Navigation extends PureComponent {
         iconElementLeft={<IconButton onClick={this.goHome}><GameIcon /></IconButton>}
         iconElementRight={signedIn ?
           <FlatButton label="Sign out" onClick={this.signOut.bind(this)} /> :
-          <FlatButton label="Sign up" onClick={this.signUp} />
+          <FlatButton label="Sign in" onClick={this.signIn} />
         }
       />
     )
