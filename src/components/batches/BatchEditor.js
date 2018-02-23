@@ -6,9 +6,7 @@ import createBatch from '../../actions/batches/create'
 class BatchEditor extends PureComponent {
   constructor(props) {
     super()
-
     const { batchNumber, startDate, endDate } = props
-
 
     this.state = {
       batchNumber,
@@ -24,20 +22,6 @@ class BatchEditor extends PureComponent {
     console.log(this.refs.batchNumber)
   }
 
-  // setStartDate() {
-  //   this.setState({
-  //     startDate: this.refs.startDate.state.date
-  //
-  //   })
-  //   console.log(this.refs.startDate.state.date)
-  // }
-  //
-  // setEndDate() {
-  //   this.setState({
-  //     endDate: this.refs.endDate.state.date
-  //   })
-  // }
-
   saveBatch() {
     const startDate = this.refs.startDate.state.date
     const endDate = this.refs.endDate.state.date
@@ -51,7 +35,6 @@ class BatchEditor extends PureComponent {
 
     console.log(batch)
     this.props.createBatch(batch)
-
   }
 
   render() {

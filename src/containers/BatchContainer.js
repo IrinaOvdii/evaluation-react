@@ -7,8 +7,6 @@ import fetchBatches, { fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import BatchItem from '../components/batches/BatchItem'
 import BatchEditor from '../components/batches/BatchEditor'
-import './BatchContainer.css'
-
 
 class BatchContainer extends PureComponent {
   static propTypes = {
@@ -22,7 +20,6 @@ class BatchContainer extends PureComponent {
   }
 
   goToBatch = batchId => event => this.props.push(`/batches/${batchId}`)
-
 
   renderBatch = (batch, index) => {
     return (
@@ -45,7 +42,6 @@ class BatchContainer extends PureComponent {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = ({ batches }) => ({ batches })
