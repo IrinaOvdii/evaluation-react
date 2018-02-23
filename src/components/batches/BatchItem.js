@@ -21,15 +21,18 @@ class BatchItem extends PureComponent {
     endDate: PropTypes.string.isRequired,
   }
 
+
   render() {
     const { _id, batchNumber, startDate, endDate } = this.props
+    const shortStartDate = new Date(startDate).toLocaleDateString()
+    const shortEndtDate = new Date(endDate).toLocaleDateString()
     return(
       <div style={styles.batchContainer} className="Batch">
         <article onClick={this.props.goToBatch} className="batch">
           <h2>
             Batch №{ batchNumber }
           </h2>
-          <p> {startDate} - {endDate} </p>
+          <p> {shortStartDate} - {shortEndtDate} </p>
         </article>
       </div>
     )
