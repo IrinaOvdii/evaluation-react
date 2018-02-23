@@ -76,26 +76,25 @@ class Batch extends PureComponent {
     // }
 
     onGetStudent = () => {
-      const studentsRed = this.props.batch ? this.props.batch.students.filter((student) => student.lastColor === 'red') : []
-      const studentsYellow = this.props.batch ? this.props.batch.students.filter((student) => student.lastColor === 'yellow') : []
-      const studentsGreen = this.props.batch ? this.props.batch.students.filter((student) => student.lastColor === 'green') : []
+      const studentsRed = this.props.batch.students.filter(i => i.lastColor === 'Red')
+      console.log(studentsRed)
+      const studentsYellow = this.props.batch.students.filter(i => i.lastColor === 'Yellow')
+      const studentsGreen = this.props.batch.students.filter(i => i.lastColor === 'Green')
       const risk = Math.floor(Math.random() * 100)
-      let name = null
+      let student = null
 
       if(risk <= 48) {
-        name = studentsRed[Math.floor(Math.random()*studentsRed.length)]
+        student = studentsRed[Math.floor(Math.random()*studentsRed.length)]
       }
       else if ((risk <= 82) && (risk > 48)) {
-        name = studentsYellow[Math.floor(Math.random()*studentsYellow.length)]
+        student = studentsYellow[Math.floor(Math.random()*studentsYellow.length)]
       }
       else if (risk > 82) {
-        name = studentsGreen[Math.floor(Math.random()*studentsGreen.length)]
+        student = studentsGreen[Math.floor(Math.random()*studentsGreen.length)]
       }
 
-      alert(name)
+      alert(`${student.name}`)
     }
-
-
 
     render() {
       const { batch } = this.props
