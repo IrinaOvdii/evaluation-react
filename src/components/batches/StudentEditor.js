@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 // import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
-import createStudent from '../../actions/batches/create'
+import { createStudent } from '../../actions/batches/create'
 
 class StudentEditor extends PureComponent {
   constructor(props) {
@@ -52,6 +52,7 @@ class StudentEditor extends PureComponent {
     if(!name || !photo) {
       return
     }
+    console.log(batchId, newstudent)
     this.props.createStudent(batchId, newstudent)
   }
 
