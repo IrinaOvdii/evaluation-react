@@ -35,20 +35,25 @@ export default (state = [], { type, payload } = {}) => {
         }
         return batch
       })
-
-    case BATCH_STUDENTS_UPDATED :
-      return state.map((batch) => {
-        if (batch._id === payload.batch._id) {
-          return { ...payload.batch, students: payload.students }
-        }
-        return batch
-      })
-
-    case BATCH_REMOVED :
-        return state.filter((batch) => (batch._id !== payload._id))
-
-    default :
+      case BATCH_STUDENTS_UPDATED :
+      const newState = { ...payload }
+      console.log(newState)
+      default :
       return state
+
+    // case BATCH_STUDENTS_UPDATED :
+    //   return state.map((batch) => {
+    //     if (batch._id === payload.batch._id) {
+    //       return { ...payload.batch, students: payload.students }
+    //     }
+    //     return batch
+    //   })
+    //
+    // case BATCH_REMOVED :
+    //     return state.filter((batch) => (batch._id !== payload._id))
+    //
+    // default :
+    //   return state
 
   }
 }

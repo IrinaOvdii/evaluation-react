@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
-// import StudentInfo from '../components/batches/StudentInfo'
+import StudentEditor from '../components/batches/StudentEditor'
 
 const styles = {
     batchContainer: {
@@ -77,20 +77,19 @@ class Batch extends PureComponent {
 
     onGetStudent = () => {
       const studentsRed = this.props.batch.students.filter(i => i.lastColor === 'Red')
-      console.log(studentsRed)
       const studentsYellow = this.props.batch.students.filter(i => i.lastColor === 'Yellow')
       const studentsGreen = this.props.batch.students.filter(i => i.lastColor === 'Green')
-      const risk = Math.floor(Math.random() * 100)
-      let student = null
+      const randNumber = Math.floor((Math.random() * 100) + 1)
+      console.log(randNumber)
 
-      if(risk <= 48) {
-        student = studentsRed[Math.floor(Math.random()*studentsRed.length)]
+      if(randNumber <= 49) {
+        var student = studentsRed[Math.floor(Math.random()*studentsRed.length)]
       }
-      else if ((risk <= 82) && (risk > 48)) {
-        student = studentsYellow[Math.floor(Math.random()*studentsYellow.length)]
+      else if ((randNumber > 49) && (randNumber <= 82)) {
+        var student = studentsYellow[Math.floor(Math.random()*studentsYellow.length)]
       }
-      else if (risk > 82) {
-        student = studentsGreen[Math.floor(Math.random()*studentsGreen.length)]
+      else if (randNumber > 82) {
+        var student = studentsGreen[Math.floor(Math.random()*studentsGreen.length)]
       }
 
       alert(`${student.name}`)
@@ -114,10 +113,10 @@ class Batch extends PureComponent {
               <h6>{student.lastColor}</h6>
 
             </div>))}
-
             <div>
               <button onClick={this.onGetStudent}>ASK A QUESTION</button>
-            </div>
+            </div> <br/>
+            < StudentEditor />
         </div>)
     }
   }

@@ -28,3 +28,22 @@ export default (batch) => {
       })
   }
 }
+
+export const createStudent = (batchId, student) => {
+  return (dispatch) => {
+    dispatch({ type: APP_LOADING })
+
+    api.post(`/batches/${batchId}/students`, student)
+      .then(() => {
+        dispatch({ type: APP_DONE_LOADING })
+        dispatch({ type: LOAD_SUCCESS })
+      })
+      .catch((error) => {
+        dispatch({ type: APP_DONE_LOADING })
+        dispatch({
+          type: LOAD_ERROR,
+          payload: error.message
+        })
+      })
+  }
+}
