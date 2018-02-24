@@ -5,8 +5,9 @@ import {
     BatchContainer,
     Batch,
     SignIn,
-    StudentInfo
+    // StudentInfo
 } from './containers';
+import StudentInfo from './components/batches/StudentInfo'
 
 export default class Routes extends Component {
     render() {

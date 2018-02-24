@@ -29,11 +29,11 @@ export default (batch) => {
   }
 }
 
-export const createStudent = (batchId, student) => {
+export const createStudent = (batchId, newStudent) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.post(`/batches/${batchId}/students`, student)
+    api.post(`/batches/${batchId}/students`, newStudent)
       .then(() => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })

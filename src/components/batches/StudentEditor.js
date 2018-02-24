@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 // import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
-import {createStudent} from '../../actions/batches/create'
+import createStudent from '../../actions/batches/create'
 
 class StudentEditor extends PureComponent {
   constructor(props) {
@@ -40,7 +40,7 @@ class StudentEditor extends PureComponent {
       lastColor
     } = this.state
 
-    const student = {
+    const newstudent = {
       name,
       photo,
       lastColor
@@ -52,7 +52,7 @@ class StudentEditor extends PureComponent {
     if(!name || !photo) {
       return
     }
-    this.props.createStudent(batchId, student)
+    this.props.createStudent(batchId, newstudent)
   }
 
   render() {

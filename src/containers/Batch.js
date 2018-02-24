@@ -116,13 +116,14 @@ class Batch extends PureComponent {
             <div>
               <button onClick={this.onGetStudent}>ASK A QUESTION</button>
             </div> <br/>
-            < StudentEditor />
+            < StudentEditor {...this.props}/>
         </div>)
     }
   }
 
 const mapStateToProps = ({ batches }, { match }) => {
     const batch = batches.filter((g) => (g._id === match.params.batchId))[0];
+
     return {
         batch,
     }
