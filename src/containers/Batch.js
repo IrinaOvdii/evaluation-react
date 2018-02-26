@@ -5,6 +5,7 @@ import { push } from 'react-router-redux'
 import { fetchOneBatch, fetchStudents } from '../actions/batches/fetch'
 import { connect as subscribeToWebsocket } from '../actions/websocket'
 import StudentEditor from '../components/batches/StudentEditor'
+import './Batch.css'
 
 const styles = {
     batchContainer: {
@@ -82,9 +83,9 @@ class Batch extends PureComponent {
   }
 
   onGetStudent = () => {
-    const studentsRed = this.props.batch.students.filter(i => i.lastColor === 'Red');
-    const studentsYellow = this.props.batch.students.filter(i => i.lastColor === 'Yellow');
-    const studentsGreen = this.props.batch.students.filter(i => i.lastColor === 'Green');
+    const studentsRed = this.props.batch.students.filter(i => i.lastColor === 'Red')
+    const studentsYellow = this.props.batch.students.filter(i => i.lastColor === 'Yellow')
+    const studentsGreen = this.props.batch.students.filter(i => i.lastColor === 'Green')
 
     var randomizedStudents = []
       randomizedStudents = randomizedStudents.concat(
@@ -93,7 +94,7 @@ class Batch extends PureComponent {
         this.getRandomizedArray(studentsYellow, 33)
       )
     var index = Math.floor(Math.random()*randomizedStudents.length)
-    var student = randomizedStudents[index];
+    var student = randomizedStudents[index]
     console.log(index)
 
     alert(`Question for ${student.name} with last color ${student.lastColor}`)
@@ -105,6 +106,7 @@ class Batch extends PureComponent {
     const { _id } = batch
 
     return (
+      <div className='wrap'>
       <div style={styles.batchContainer} className="Batch">
         {batch.students.map(student => (
           <div
@@ -118,9 +120,12 @@ class Batch extends PureComponent {
 
           </div>))}
           <div>
-            <button onClick={this.onGetStudent}>ASK A QUESTION</button>
+          </div>
+            <button onClick={this.onGetStudent} className='ask-btn'>ASK A QUESTION </button>
           </div> <br/>
-          < StudentEditor {...this.props}/>
+          <div className='edit-form'>
+            < StudentEditor {...this.props}/>
+          </div>
       </div>)
   }
 }

@@ -1,0 +1,20 @@
+.ask-btn {
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 10px;
+  display: block;
+  background-color: #3be5c3;
+  color: white;
+}
+.wrap {
+  display: block;
+}
+.edit-form {
+  display: block;
+  position: static;
+  height:20px;
+  width:220px;
+  padding:5px 8px;
+  margin-bottom: 16px;
+
+}
