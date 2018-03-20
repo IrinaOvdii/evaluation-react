@@ -1,6 +1,6 @@
 // src/api/client.js
-
 import request from 'superagent'
+const host = process.env.API_HOST || 'https://evaluation-ovdii.herokuapp.com'
 
 export default class ApiClient {
   defaultOptions = {
