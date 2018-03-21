@@ -1,6 +1,6 @@
 // src/api/client.js
 import request from 'superagent'
-const host = process.env.API_HOST || 'https://evaluation-ovdii.herokuapp.com'
+const host = process.env.API_HOST || 'https://evaluation-ovdii-api.herokuapp.com/'
 
 export default class ApiClient {
   defaultOptions = {
@@ -9,7 +9,7 @@ export default class ApiClient {
 
   constructor(host, options = {}) {
     this.host = process.env.NODE_ENV === 'production'
-      ? 'https://evaluation-ovdii.herokuapp.com' // WITHOUT the / !!!
+      ? 'https://evaluation-ovdii-api.herokuapp.com/' // WITHOUT the / !!!
       : (host || 'http://localhost:3030')
 
     this.options = { ...this.defaultOptions, ...options }
